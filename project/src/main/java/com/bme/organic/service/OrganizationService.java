@@ -70,7 +70,9 @@ public class OrganizationService {
         User foundUser = findUser(userID);
         Organization foundOrg = findOrganization(dto.getId());
         foundOrg.addAssignee(foundUser);
+        foundUser.addOrganization(foundOrg);
         repository.save(foundOrg);
+        userRepository.save(foundUser);
         return mapper.EntityToDTO(foundOrg);
     }
 

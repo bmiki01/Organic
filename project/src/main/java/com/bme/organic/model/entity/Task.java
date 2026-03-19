@@ -1,6 +1,8 @@
 package com.bme.organic.model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Task {
@@ -11,6 +13,7 @@ public class Task {
     private TaskStatus status;
     private String description;
     @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
     private Organization organization;
 
     public Long getId() {

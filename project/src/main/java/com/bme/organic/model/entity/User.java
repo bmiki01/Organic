@@ -1,6 +1,7 @@
 package com.bme.organic.model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 import java.util.UUID;
@@ -20,7 +21,16 @@ public class User {
     @ManyToMany(mappedBy = "assignee")
     private List<Organization> organizations;
     @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<Task> tasks;
+
+    public void addOrganization(Organization organization) {
+        organizations.add(organization);
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
 
     public String getEmail() {
         return email;

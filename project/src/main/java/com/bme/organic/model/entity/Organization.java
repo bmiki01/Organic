@@ -1,9 +1,12 @@
 package com.bme.organic.model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import java.util.List;
 import java.util.UUID;
+
 
 @Entity
 public class Organization {
@@ -12,13 +15,17 @@ public class Organization {
     private UUID id;
     @Column(unique = true)
     private String name;
-    @OneToMany(mappedBy = "organization", cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "organization", fetch = FetchType.EAGER)
+    @Cascade(CascadeType.ALL)
     private List<Task> tasks;
     @ManyToMany
     private List<User> assignee;
     @OneToOne
     private User manager;
 
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
     public void addAssignee(User user) {
         assignee.add(user);
     }

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>images/logo.png</file>
+        <file>styleSheet/Combinear.qss</file>
+        <file>images/login.png</file>
+        <file>images/nature.png</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>

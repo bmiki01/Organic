@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/task")
@@ -27,10 +28,10 @@ public class TaskController {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<TaskDTO> save(@RequestBody TaskDTO task){
+    @PostMapping("/{userId}")
+    public ResponseEntity<TaskDTO> save(@PathVariable UUID userId , @RequestBody TaskDTO task){
         try {
-            TaskDTO saved = service.save(task);
+            TaskDTO saved = service.save(userId, task);
             return new ResponseEntity<>(saved, HttpStatus.CREATED);
         } catch(InconsistentDataException ide) {
             logger.warn(ide.getMessage());
