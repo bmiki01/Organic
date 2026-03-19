@@ -1,0 +1,16 @@
+.gitignore
+AdminViewWindow.cpp
+AdminViewWindow.h
+MainViewWindow.cpp
+MainViewWindow.h
+NewTaskWindow.cpp
+NewTaskWindow.h
+firstloginwindow.cpp
+firstloginwindow.h
+main.cpp
+mainwindow.cpp
+mainwindow.h
+registrationwindow.cpp
+registrationwindow.h
+welcomewindow.cpp
+welcomewindow.h

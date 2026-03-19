@@ -1,0 +1,21 @@
+<Configuration debug="true">
+
+    <Appenders>
+        <File name="File" fileName="logs/organic.log" immediateFlush="false" append="false">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level}{DEBUG=bg_red, ERROR=red, WARN=yellow, INFO=green} %C{3}{%-40.40C{1.}}{cyan} : %msg%n"/>
+        </File>
+        <Console name="Console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %highlight{%-5level} [%15.15t] %style{%-40.40C{1.}} : %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- Root logger referring to console appender -->
+        <Root level="info" additivity="false">
+            <AppenderRef ref="Console" />
+        </Root>
+        <Logger name="method" level="debug">
+            <AppenderRef ref="File"/>
+        </Logger>
+    </Loggers>
+
+</Configuration>
